@@ -4,8 +4,8 @@
 
 - Establish a lightweight distributed reasoning system using existing AMI infrastructure (`/nodes/launcher`, `/browser`, `/marketing/research`, `/ux/cms`, `/base/dataops`).
 - Enable autonomous worker and moderator processes that spawn, validate, and terminate themselves without central orchestration.
-- Integrate with BPMN workflows, MCP servers, and the bootstrapping provenance framework documented in `BOOTSTRAP.md` and `INCREMENTAL.md`.
-- Provide a pragmatic implementation that evolves into more sophisticated reasoning architectures while maintaining cryptographic provenance chains.
+- Integrate with BPMN workflows, MCP servers, and cryptographic provenance chains.
+- Provide a pragmatic implementation that evolves into more sophisticated reasoning architectures while maintaining auditability.
 
 ## 2. Core Concept
 
@@ -95,7 +95,7 @@ Validation scripts that check worker outputs. Each moderator:
 
 ## 4. Cryptographic Provenance Chain
 
-### 4.1 Genesis Kernel (Layer 0)
+### 4.1 Cryptographic Root (Layer 0)
 
 **Immutable Foundation**:
 
@@ -109,11 +109,11 @@ Validation scripts that check worker outputs. Each moderator:
 ```python
 from cryptography.hazmat.primitives.asymmetric import ed25519
 
-class GenesisKernel:
+class ProvenanceRoot:
     """Immutable root authority for provenance chain."""
 
     # Burned into code at build time
-    GENESIS_PUBLIC_KEY: Final[bytes]  # Root of all verification
+    ROOT_PUBLIC_KEY: Final[bytes]  # Root of all verification
     SAFETY_CONSTRAINTS: Final[frozenset[str]]  # Immutable rules
 
     @staticmethod
@@ -375,7 +375,7 @@ class ProvenanceEntry(StorageModel):
 **Chain Properties**:
 
 1. **Unbroken lineage**: Every process links to parent via `parent_entry_uid`
-2. **Cryptographic verification**: Signatures verify back to genesis kernel
+2. **Cryptographic verification**: Signatures verify back to cryptographic root
 3. **Immutable**: Entries written once, never modified
 4. **Auditable**: Complete log of decisions, validations, and spawns
 5. **Reproducible**: Can replay process tree from provenance records
@@ -1732,43 +1732,7 @@ class LimitEnforcer:
 
 ## 10. Alignment with Existing Frameworks
 
-### 10.1 Bootstrap Provenance Integration
-
-Alignment with `BOOTSTRAP.md` and `INCREMENTAL.md` frameworks:
-
-**Layer 0: Genesis Kernel**
-
-- Implemented as: Immutable worker/moderator contract + cryptographic root
-- Enforces: Safety constraints (no direct filesystem writes outside research dir)
-- Verification: Moderators check worker outputs against schemas and rules
-
-**Layer 1: Bootstrap Verifier**
-
-- Implemented as: Moderator scripts that validate worker outputs
-- Signing: Moderators append audit entries with cryptographic signatures
-- Cannot modify: Layer 0 contracts (script interfaces are immutable)
-
-**Layer 2+: Evolving Reasoning**
-
-- Workers can propose new worker/moderator scripts
-- New scripts must be validated by existing moderators
-- Audit trail in Research MCP tracks provenance
-
-**Provenance Chain Example**:
-
-```
-Research Task: "Analyze AI agent market"
-├─ worker-research.sh (Layer 0, validated by genesis)
-│   └─ Audit: "Spawned by user, token sig_ABC...123"
-├─ moderator-quality.sh (Layer 0, validated by genesis)
-│   └─ Audit: "Validated worker PID 1001, approved, sig_DEF...456"
-├─ worker-analyze.sh (Layer 2, spawned by worker-research)
-│   └─ Audit: "Spawned by PID 1001, token sig_GHI...789 [parent: sig_ABC...123]"
-└─ worker-synthesize-v2.sh (Layer 2+, proposed by worker-analyze)
-    └─ Audit: "Proposed by PID 1003, verified by moderator-meta, sig_JKL...012"
-```
-
-### 10.2 Extension of SPEC-LEARNING
+### 10.1 Extension of SPEC-LEARNING
 
 The Self-Moderating Reasoner complements SPEC-LEARNING:
 
@@ -1810,7 +1774,6 @@ The Self-Moderating Reasoner complements SPEC-LEARNING:
 - Research MCP Spec: `domains/marketing/backend/mcp/research/SPEC-RESEARCH.md`
 - CMS Communication: `ux/cms/docs/spec.md`
 - BPMN Models: `base/backend/dataops/models/bpmn.py`
-- Bootstrap Framework: `learning/BOOTSTRAP.md`, `learning/INCREMENTAL.md`
 - Learning Module Spec: `learning/SPEC-LEARNING.md`
 - LocalProcessAdapter (stdout/stderr redirection): `nodes/backend/launcher/adapters/local.py:72-80`
 
