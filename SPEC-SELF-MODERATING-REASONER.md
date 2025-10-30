@@ -4,7 +4,7 @@
 
 - Establish a lightweight distributed reasoning system using existing AMI infrastructure (`/nodes/launcher`, `/browser`, `/marketing/research`, `/ux/cms`, `/base/dataops`).
 - Enable autonomous worker and moderator processes that spawn, validate, and terminate themselves without central orchestration.
-- Integrate with BPMN workflows, MCP servers, and the bootstrapping provenance framework documented in `bootstrap.md` and `incremental.md`.
+- Integrate with BPMN workflows, MCP servers, and the bootstrapping provenance framework documented in `BOOTSTRAP.md` and `INCREMENTAL.md`.
 - Provide a pragmatic implementation that evolves into more sophisticated reasoning architectures while maintaining cryptographic provenance chains.
 
 ## 2. Core Concept
@@ -1734,7 +1734,7 @@ class LimitEnforcer:
 
 ### 10.1 Bootstrap Provenance Integration
 
-Alignment with `bootstrap.md` and `incremental.md` frameworks:
+Alignment with `BOOTSTRAP.md` and `INCREMENTAL.md` frameworks:
 
 **Layer 0: Genesis Kernel**
 
@@ -1810,7 +1810,7 @@ The Self-Moderating Reasoner complements SPEC-LEARNING:
 - Research MCP Spec: `domains/marketing/backend/mcp/research/SPEC-RESEARCH.md`
 - CMS Communication: `ux/cms/docs/spec.md`
 - BPMN Models: `base/backend/dataops/models/bpmn.py`
-- Bootstrap Framework: `learning/bootstrap.md`, `learning/incremental.md`
+- Bootstrap Framework: `learning/BOOTSTRAP.md`, `learning/INCREMENTAL.md`
 - Learning Module Spec: `learning/SPEC-LEARNING.md`
 - LocalProcessAdapter (stdout/stderr redirection): `nodes/backend/launcher/adapters/local.py:72-80`
 

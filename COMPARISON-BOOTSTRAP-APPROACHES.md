@@ -4,12 +4,12 @@
 
 Both documents propose using **compiler bootstrapping** as the foundational metaphor for safe, self-evolving AI systems. However, they emphasize different aspects and could be highly complementary.
 
-**Gemini's Approach** (bootstrap.md): Deterministic Self-Evolving AI (DSE-AI)
+**Gemini's Approach** (BOOTSTRAP.md): Deterministic Self-Evolving AI (DSE-AI)
 - Focus: **Deterministic evolution with traceable justifications**
 - Core Mechanism: AAL/AADL language stack for describing model changes
 - Verification: Hypothesis-Trigger-Verification triad
 
-**Claude's Approach** (incremental.md): Formal Verification Bootstrap
+**Claude's Approach** (INCREMENTAL.md): Formal Verification Bootstrap
 - Focus: **Formal safety proofs with cryptographic provenance**
 - Core Mechanism: Formal verification with immutable axioms
 - Verification: Mathematical proofs of safety properties

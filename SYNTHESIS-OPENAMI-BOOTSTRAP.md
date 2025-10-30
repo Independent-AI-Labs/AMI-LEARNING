@@ -5,8 +5,8 @@
 This document synthesizes three complementary approaches to safe, trustworthy AI systems:
 
 1. **Open AMI Framework** (AMI-ORCHESTRATOR foundation): Comprehensive architecture with 4 pillars (Compliance, Integrity, Abstraction, Dynamics)
-2. **Gemini's DSE-AI** (bootstrap.md): Deterministic Self-Evolving AI with language stack (AAL/AADL)
-3. **Claude's Formal Bootstrap** (incremental.md): Formal verification with cryptographic provenance
+2. **Gemini's DSE-AI** (BOOTSTRAP.md): Deterministic Self-Evolving AI with language stack (AAL/AADL)
+3. **Claude's Formal Bootstrap** (INCREMENTAL.md): Formal verification with cryptographic provenance
 
 **Key Insight**: These are not competing approaches but **complementary layers** that together provide a complete solution for trustworthy, self-evolving AI within the Open AMI architecture.
 
